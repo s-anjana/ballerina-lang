@@ -283,7 +283,7 @@ public class MockAnnotationProcessor extends AbstractCompilerPlugin {
 
             // If value does NOT contain 'ballerina/' then it could be fully qualified
         } else if (!value.contains(Names.ORG_NAME_SEPARATOR.value) && !value.contains(Names.VERSION_SEPARATOR.value)) {
-            value = new PackageID(parent.packageID.orgName, new Name(value),
+            value = new PackageID(parent.packageID.orgName, new Name(value), Names.DEFAULT_MODULE,
                     parent.packageID.version).toString();
         }
         return value;

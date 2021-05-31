@@ -224,6 +224,7 @@ public class BLangDiagnosticLog implements DiagnosticLog {
         PackageID pkgId = null;
         if (moduleDescriptor != null) {
             pkgId = new PackageID(new Name(moduleDescriptor.org().value()),
+                                  new Name(moduleDescriptor.packageName().value()),
                                   new Name(moduleDescriptor.name().toString()),
                                   new Name(moduleDescriptor.version().toString()));
         }

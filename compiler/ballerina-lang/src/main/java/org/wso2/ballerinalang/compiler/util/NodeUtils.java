@@ -59,6 +59,6 @@ public class NodeUtils {
         if (version == Names.EMPTY) {
             version = Names.DEFAULT_VERSION;
         }
-        return new PackageID(orgName, nameList, version);
+        return new PackageID(orgName, nameList, Names.DEFAULT_MODULE, version);
     }
 }

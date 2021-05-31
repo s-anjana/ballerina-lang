@@ -17,6 +17,7 @@
 
 package io.ballerina.semantic.api.test;
 
+import io.ballerina.compiler.api.ModuleID;
 import io.ballerina.compiler.api.SemanticModel;
 import io.ballerina.compiler.api.impl.symbols.BallerinaModule;
 import io.ballerina.compiler.api.symbols.ClassSymbol;
@@ -36,6 +37,7 @@ import io.ballerina.projects.Package;
 import io.ballerina.projects.PackageCompilation;
 import io.ballerina.projects.Project;
 import io.ballerina.semantic.api.test.util.SemanticAPITestUtils;
+import io.ballerina.tools.text.LinePosition;
 import org.ballerinalang.test.BCompileUtil;
 import org.ballerinalang.test.CompileResult;
 import org.testng.Assert;
@@ -142,6 +144,16 @@ public class SymbolBIRTest {
 
         List<Symbol> symbolsInScope = model.visibleSymbols(srcFile, from(18, 0));
         assertList(symbolsInScope, expSymbolNames);
+
+        Optional<Symbol> symbol = model.symbol(srcFile, LinePosition.from(22, 26));
+        if (symbol.isPresent()) {
+            Optional<ModuleSymbol> module = symbol.get().getModule();
+            if (module.isPresent()) {
+                ModuleID id = module.get().id();
+                String packageName = id.packageName();
+                int i = 0;
+            }
+        }
 
         BallerinaModule fooModule = (BallerinaModule) symbolsInScope.stream()
                 .filter(sym -> sym.getName().get().equals("testproject")).findAny().get();

@@ -142,7 +142,8 @@ public class GeneralFSPackageRepository implements PackageRepository {
                         if (dirNameCount > baseNameCount) {
                             dir.subpath(baseNameCount, dirNameCount).forEach(
                                     f -> nameComps.add(new Name(sanitize(f.getFileName().toString(), separator))));
-                            result.add(new PackageID(Names.ANON_ORG, nameComps, Names.DEFAULT_VERSION));
+                            result.add(new PackageID(Names.ANON_ORG, Names.DEFAULT_PACKAGE, nameComps,
+                                    Names.DEFAULT_VERSION));
                         }
                     }
                     if ((dir.getNameCount() + 1) - baseNameCount > maxDepth) {

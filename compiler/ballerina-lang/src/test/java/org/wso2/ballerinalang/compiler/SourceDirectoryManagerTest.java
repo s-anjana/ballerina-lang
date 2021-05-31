@@ -55,6 +55,7 @@ public class SourceDirectoryManagerTest {
         List<PackageID> expectedPackageIds = new ArrayList<>();
         expectedPackageIds.add(new PackageID(names.fromString("abc"),
                                              names.fromString("fruits"),
+                                             Names.DEFAULT_MODULE,
                                              names.fromString("0.0.1"))
         );
 
@@ -68,6 +69,7 @@ public class SourceDirectoryManagerTest {
         Names names = Names.getInstance(context);
         PackageID expectedPackageId = new PackageID(names.fromString("abc"),
                                                     names.fromString("fruits"),
+                                                    Names.DEFAULT_MODULE,
                                                     names.fromString("0.0.1"));
         Assert.assertEquals(fruits, expectedPackageId);
     }
@@ -78,18 +80,22 @@ public class SourceDirectoryManagerTest {
         Names names = Names.getInstance(context);
         PackageID expectedPackageId = new PackageID(names.fromString("abc"),
                 names.fromString("fruits"),
+                Names.DEFAULT_MODULE,
                 names.fromString("0.0.1"));
         Assert.assertTrue(project.isModuleExists(expectedPackageId));
         PackageID invalidName = new PackageID(names.fromString("abc"),
                 names.fromString("invalid"),
+                Names.DEFAULT_MODULE,
                 names.fromString("0.0.1"));
         Assert.assertFalse(project.isModuleExists(invalidName));
         PackageID invalidOrg = new PackageID(names.fromString("invalid"),
                 names.fromString("fruits"),
+                Names.DEFAULT_MODULE,
                 names.fromString("0.0.1"));
         Assert.assertFalse(project.isModuleExists(invalidOrg));
         PackageID invalidVersion = new PackageID(names.fromString("abc"),
                 names.fromString("fruits"),
+                Names.DEFAULT_MODULE,
                 names.fromString("0.1.1"));
         Assert.assertFalse(project.isModuleExists(invalidVersion));
     }
@@ -100,6 +106,7 @@ public class SourceDirectoryManagerTest {
         Names names = Names.getInstance(context);
         PackageID moduleId = new PackageID(names.fromString("abc"),
                 names.fromString("fruits"),
+                Names.DEFAULT_MODULE,
                 names.fromString("0.0.1"));
         // valid module
         String balaName =  "fruits-abc-any-0.0.1.bala";
@@ -112,6 +119,7 @@ public class SourceDirectoryManagerTest {
         try {
             PackageID invalidModuleId = new PackageID(names.fromString("invalid"),
                     names.fromString("fruits"),
+                    Names.DEFAULT_MODULE,
                     names.fromString("0.0.1"));
             // invalid valid module
             project.getBalaPath(invalidModuleId);

@@ -59,7 +59,7 @@ public class BLangDiagnosticLogTest {
     @Test
     public void testLogDiagnosticWithModuleDescriptor() {
         BLangPackage pkgNode = (BLangPackage) TreeBuilder.createPackageNode();
-        PackageID packageID = createPackageID("org.diagnostic.log", ".", "1.0.0");
+        PackageID packageID = createPackageID("org.diagnostic.log", ".",  ".", "1.0.0");
 
         PackageCache packageCache = PackageCache.getInstance(context);
         packageCache.put(packageID, pkgNode);
@@ -76,7 +76,7 @@ public class BLangDiagnosticLogTest {
     @Test
     public void testLogDiagnosticWithPackageID() {
         BLangPackage pkgNode = (BLangPackage) TreeBuilder.createPackageNode();
-        PackageID packageID = createPackageID("org.diagnostic.log", ".", "1.0.0");
+        PackageID packageID = createPackageID("org.diagnostic.log", ".", ".", "1.0.0");
 
         PackageCache packageCache = PackageCache.getInstance(context);
         packageCache.put(packageID, pkgNode);
@@ -91,8 +91,12 @@ public class BLangDiagnosticLogTest {
     }
 
     // helpers
-    private PackageID createPackageID(String orgName, String name, String version) {
-        return new PackageID(new Name(orgName), new Name(name), new Name(version));
+    // TODO: Remove this method
+//    private PackageID createPackageID(String orgName, String name, String version) {
+//        return new PackageID(new Name(orgName), new Name(name), new Name(version));
+//    }
+    private PackageID createPackageID(String orgName, String pkgName, String name, String version) {
+        return new PackageID(new Name(orgName), new Name(pkgName), new Name(name), new Name(version));
     }
 
     private ModuleDescriptor createModuleDescriptor(Name pkgOrgName,

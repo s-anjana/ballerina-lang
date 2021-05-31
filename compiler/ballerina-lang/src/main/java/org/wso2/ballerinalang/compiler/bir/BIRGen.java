@@ -258,7 +258,7 @@ public class BIRGen extends BLangNodeVisitor {
     }
 
     public BLangPackage genBIR(BLangPackage astPkg) {
-        BIRPackage birPkg = new BIRPackage(astPkg.pos, astPkg.packageID.orgName,
+        BIRPackage birPkg = new BIRPackage(astPkg.pos, astPkg.packageID.orgName, astPkg.packageID.pkgName,
                 astPkg.packageID.name, astPkg.packageID.version, astPkg.packageID.sourceFileName);
 
         astPkg.symbol.bir = birPkg; //TODO try to remove this
@@ -270,8 +270,8 @@ public class BIRGen extends BLangNodeVisitor {
         astPkg.symbol.birPackageFile = new BIRPackageFile(new BIRBinaryWriter(birPkg).serialize());
 
         if (astPkg.hasTestablePackage()) {
-            BIRPackage testBirPkg = new BIRPackage(astPkg.pos, astPkg.packageID.orgName, astPkg.packageID.name,
-                                                astPkg.packageID.version, astPkg.packageID.sourceFileName);
+            BIRPackage testBirPkg = new BIRPackage(astPkg.pos, astPkg.packageID.orgName, astPkg.packageID.pkgName,
+                    astPkg.packageID.name, astPkg.packageID.version, astPkg.packageID.sourceFileName);
             this.env = new BIRGenEnv(testBirPkg);
             astPkg.accept(this);
             astPkg.getTestablePkgs().forEach(testPkg -> {
@@ -592,7 +592,7 @@ public class BIRGen extends BLangNodeVisitor {
     @Override
     public void visit(BLangImportPackage impPkg) {
         this.env.enclPkg.importModules.add(new BIRNode.BIRImportModule(impPkg.pos, impPkg.symbol.pkgID.orgName,
-                impPkg.symbol.pkgID.name, impPkg.symbol.pkgID.version));
+                impPkg.symbol.pkgID.pkgName, impPkg.symbol.pkgID.name, impPkg.symbol.pkgID.version));
     }
 
     @Override

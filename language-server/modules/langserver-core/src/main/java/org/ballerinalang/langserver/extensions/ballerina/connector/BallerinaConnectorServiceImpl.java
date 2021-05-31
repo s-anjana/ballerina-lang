@@ -54,6 +54,7 @@ import org.eclipse.lsp4j.Position;
 import org.wso2.ballerinalang.compiler.packaging.Patten;
 import org.wso2.ballerinalang.compiler.packaging.repo.HomeBalaRepo;
 import org.wso2.ballerinalang.compiler.util.Name;
+import org.wso2.ballerinalang.compiler.util.Names;
 import org.wso2.ballerinalang.compiler.util.ProjectDirConstants;
 
 import java.io.File;
@@ -123,7 +124,8 @@ public class BallerinaConnectorServiceImpl implements BallerinaConnectorService 
 
         if (pathList.isEmpty()) {
             //check external modules
-            PackageID packageID = new PackageID(new Name(org), new Name(module), new Name(version));
+            PackageID packageID = new PackageID(new Name(org), new Name(module), Names.DEFAULT_MODULE,
+                    new Name(version));
             HomeBalaRepo homeBalaRepo = new HomeBalaRepo(new HashMap<>());
             Patten patten = homeBalaRepo.calculate(packageID);
             Stream<Path> s = patten.convert(new BalaConverter(), packageID);

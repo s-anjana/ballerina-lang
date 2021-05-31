@@ -40,7 +40,7 @@ public class ModuleDescriptor {
         if (packageDesc.name().value().equals(".") && packageDesc.org().anonymous()) {
             moduleCompilationId = PackageID.DEFAULT;
         } else {
-            moduleCompilationId = new PackageID(new Name(packageDesc.org().value()),
+            moduleCompilationId = new PackageID(new Name(packageDesc.org().value()), new Name(packageDesc.name().value()),
                     new Name(moduleName.toString()), new Name(packageDesc.version().toString()));
         }
     }

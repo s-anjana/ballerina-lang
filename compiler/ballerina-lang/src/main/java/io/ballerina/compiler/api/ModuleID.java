@@ -25,6 +25,13 @@ package io.ballerina.compiler.api;
 public interface ModuleID {
 
     /**
+     * Get the Package name of this module ID
+     *
+     * @return Package name
+     */
+    String packageName();
+
+    /**
      * Get organization name component of this module ID.
      * 
      * @return Organization name

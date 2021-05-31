@@ -9813,7 +9813,7 @@ public class Desugar extends BLangNodeVisitor {
 
     protected void addTransactionInternalModuleImport() {
         PackageID packageID = new PackageID(Names.BALLERINA_INTERNAL_ORG, Lists.of(Names.TRANSACTION),
-                Names.TRANSACTION_INTERNAL_VERSION);
+                Names.DEFAULT_MODULE, Names.TRANSACTION_INTERNAL_VERSION);
         if (!env.enclPkg.packageID.equals(packageID)) {
             BLangImportPackage importDcl = (BLangImportPackage) TreeBuilder.createImportPackageNode();
             List<BLangIdentifier> pkgNameComps = new ArrayList<>();

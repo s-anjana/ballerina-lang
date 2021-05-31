@@ -42,7 +42,7 @@ public class RepoTest {
 
     @Test
     public void testProjectObjRepo() {
-        PackageID pkg = newPackageID("my_org", "my.pkg", "1.2.3");
+        PackageID pkg = newPackageID("my_org", "my.pkg", ".", "1.2.3");
         ObjRepo subject = new ObjRepo((PathConverter) null);
 
         Patten patten = subject.calculate(pkg);
@@ -57,7 +57,7 @@ public class RepoTest {
         manifestProject.setOrgName("best_org");
         manifestProject.setVersion("1.8.3");
         
-        PackageID pkg = newPackageID("best_org", "this.pkg", "1.8.3");
+        PackageID pkg = newPackageID("best_org", "this.pkg", ".", "1.8.3");
         ProjectSourceRepo subject = new ProjectSourceRepo((PathConverter) null, manifest, false);
 
         Patten prospect = subject.calculate(pkg);
@@ -72,7 +72,7 @@ public class RepoTest {
         manifestProject.setOrgName("best_org");
         manifestProject.setVersion("1.8.3");
         
-        PackageID pkg = newPackageID("best_org", "this.pkg", "1.8.3");
+        PackageID pkg = newPackageID("best_org", "this.pkg", ".",  "1.8.3");
         ProjectSourceRepo subject = new ProjectSourceRepo((PathConverter) null, manifest, true);
 
         Patten prospect = subject.calculate(pkg);
@@ -82,7 +82,7 @@ public class RepoTest {
 
     @Test
     public void testHomeRepo() {
-        PackageID pkg = newPackageID("my_org", "my.pkg", "10.2.3");
+        PackageID pkg = newPackageID("my_org", "my.pkg", ".",  "10.2.3");
         HomeRepo subject = new HomeRepo((PathConverter) null);
 
         Patten patten = subject.calculate(pkg);
@@ -92,7 +92,7 @@ public class RepoTest {
 
     @Test
     public void testBinaryRepo() {
-        PackageID pkg = newPackageID("nice_org", "any.pkg", "10.2.3");
+        PackageID pkg = newPackageID("nice_org", "any.pkg", ".", "10.2.3");
         BinaryRepo subject = new BinaryRepo((ZipConverter) null, CompilerPhase.CODE_GEN);
 
         Patten patten = subject.calculate(pkg);
@@ -102,7 +102,7 @@ public class RepoTest {
 
     @Test
     public void testSystemOrgIsReserved() {
-        PackageID pkg = newPackageID("ballerina", "any.pkg", "10.2.3");
+        PackageID pkg = newPackageID("ballerina", "any.pkg", ".", "10.2.3");
         Repo subject = new NonSysRepo<String>(null) {
             @Override
             public Patten calculateNonSysPkg(PackageID pkg) {
@@ -116,7 +116,11 @@ public class RepoTest {
         Assert.assertEquals(patten, Patten.NULL);
     }
 
-    private PackageID newPackageID(String org, String pkg, String version) {
-        return new PackageID(new Name(org), new Name(pkg), new Name(version));
+    // TODO: Remove this method
+//    private PackageID newPackageID(String org, String pkg, String version) {
+//        return new PackageID(new Name(org), new Name(pkg), new Name(version));
+//    }
+    private PackageID newPackageID(String org, String pkg, String module, String version) {
+        return new PackageID(new Name(org), new Name(pkg), new Name(module), new Name(version));
     }
 }

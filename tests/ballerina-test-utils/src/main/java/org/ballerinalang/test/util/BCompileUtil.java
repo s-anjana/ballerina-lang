@@ -324,7 +324,7 @@ public class BCompileUtil {
                     })
                     .collect(Collectors.toList());
             // TODO: orgName is anon, fix it.
-            PackageID pkgId = new PackageID(Names.ANON_ORG, pkgNameComps, Names.DEFAULT_VERSION);
+            PackageID pkgId = new PackageID(Names.ANON_ORG, pkgNameComps, Names.DEFAULT_MODULE, Names.DEFAULT_VERSION);
             effectiveSource = pkgId.getName().getValue();
             return compileOnJBallerina(rootPath.toString(), effectiveSource, false, init, withTests);
         }

@@ -62,6 +62,17 @@ public class CodeActionModuleId implements ModuleID {
         return new CodeActionModuleId(orgName, pkgName, alias, "");
     }
 
+    /**
+     * Get the Package name of this module ID
+     *
+     * @return Package name
+     */
+    @Override
+    public String packageName() {
+        //TODO: Implement this method.
+        throw new UnsupportedOperationException("Not Implemented");
+    }
+
     @Override
     public String orgName() {
         return orgName;

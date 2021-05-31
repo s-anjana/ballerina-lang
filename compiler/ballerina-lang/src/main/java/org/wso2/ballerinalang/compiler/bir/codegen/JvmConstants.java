@@ -273,7 +273,7 @@ public class JvmConstants {
     public static final String BALLERINA = "ballerina";
     public static final String ENCODED_DOT_CHARACTER = "$0046";
     public static final PackageID DEFAULT = new PackageID(Names.ANON_ORG, new Name(ENCODED_DOT_CHARACTER),
-                                                          DEFAULT_VERSION);
+            new Name(ENCODED_DOT_CHARACTER), DEFAULT_VERSION);
     public static final String BUILT_IN_PACKAGE_NAME = "lang" + ENCODED_DOT_CHARACTER + "annotations";
     public static final String MODULE_START_ATTEMPTED = "$moduleStartAttempted";
     public static final String MODULE_STARTED = "$moduleStarted";

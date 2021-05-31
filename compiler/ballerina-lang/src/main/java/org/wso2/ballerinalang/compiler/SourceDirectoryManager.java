@@ -118,7 +118,7 @@ public class SourceDirectoryManager implements Project {
 
         //Check for built-in packages
         if (orgName.equals(Names.BUILTIN_ORG)) {
-            return new PackageID(orgName, names.fromString(sourcePackage), version);
+            return new PackageID(orgName, names.fromString(sourcePackage), Names.DEFAULT_MODULE, version);
         }
 
         //Check for source files
@@ -129,7 +129,7 @@ public class SourceDirectoryManager implements Project {
         //Check for packages
         List<String> packageNames = this.sourceDirectory.getSourcePackageNames();
         if (packageNames.contains(sourcePackage)) {
-            return new PackageID(orgName, names.fromString(sourcePackage), version);
+            return new PackageID(orgName, names.fromString(sourcePackage), Names.DEFAULT_MODULE, version);
         }
 
         return null;

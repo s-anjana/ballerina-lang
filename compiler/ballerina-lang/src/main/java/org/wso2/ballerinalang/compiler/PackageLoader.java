@@ -453,7 +453,7 @@ public class PackageLoader {
         // split from '.', '\' and '/'
         List<Name> pkgNameComps = getPackageNameComps(sourcePkg);
         Name orgName = new Name(org);
-        return new PackageID(orgName, pkgNameComps, new Name(version));
+        return new PackageID(orgName, pkgNameComps, Names.DEFAULT_MODULE, new Name(version));
     }
 
     private List<Name> getPackageNameComps(String sourcePkg) {

@@ -563,8 +563,9 @@ public class JvmCodeGenUtil {
 
     public static PackageID cleanupPackageID(PackageID pkgID) {
         Name org = new Name(IdentifierUtils.encodeNonFunctionIdentifier(pkgID.orgName.value));
+        Name pkgName = new Name(IdentifierUtils.encodeNonFunctionIdentifier(pkgID.pkgName.value));
         Name module = new Name(IdentifierUtils.encodeNonFunctionIdentifier(pkgID.name.value));
-        return new PackageID(org, module, pkgID.version);
+        return new PackageID(org, pkgName, module, pkgID.version);
     }
 
     public static boolean isBuiltInPackage(PackageID packageID) {

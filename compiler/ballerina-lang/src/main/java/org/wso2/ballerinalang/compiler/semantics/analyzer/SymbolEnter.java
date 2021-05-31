@@ -910,7 +910,7 @@ public class SymbolEnter extends BLangNodeVisitor {
                 .map(identifier -> names.fromIdNode(identifier))
                 .collect(Collectors.toList());
 
-        PackageID pkgId = new PackageID(orgName, nameComps, version);
+        PackageID pkgId = new PackageID(orgName, nameComps, Names.DEFAULT_MODULE, version);
 
         // Un-exported modules not inside current package is not allowed to import.
         BPackageSymbol bPackageSymbol = this.packageCache.getSymbol(pkgId);

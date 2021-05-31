@@ -58,7 +58,7 @@ public class RepoHierarchyTest {
 
     @Test
     public void testFullOrder() {
-        PackageID nonExisting = newPackageID("bad", "ok.pkg", "5");
+        PackageID nonExisting = newPackageID("bad", "ok.pkg", ".", "5");
         ArrayList<Integer> order = new ArrayList<>();
         RepoHierarchy subject = createSubject(order);
 
@@ -74,7 +74,7 @@ public class RepoHierarchyTest {
         Resolution resolution;
 
         // Part 1
-        PackageID repo0sPkg = newPackageID("easy", "too", "0");
+        PackageID repo0sPkg = newPackageID("easy", "too", ".", "0");
         ArrayList<Integer> order = new ArrayList<>();
         subject = createSubject(order);
 
@@ -97,7 +97,7 @@ public class RepoHierarchyTest {
         Resolution resolution;
 
         // Part 1
-        PackageID repo1sPkg = newPackageID("good", "i.am", "1");
+        PackageID repo1sPkg = newPackageID("good", "i.am", ".",  "1");
         ArrayList<Integer> order = new ArrayList<>();
         subject = createSubject(order);
 
@@ -108,7 +108,7 @@ public class RepoHierarchyTest {
 
         // Part 2
         order.clear();
-        PackageID repo4sPkg = newPackageID("ugly", "ok.pkg", "4");
+        PackageID repo4sPkg = newPackageID("ugly", "ok.pkg", ".", "4");
         subject = resolution.resolvedBy;
 
         subject.resolve(repo4sPkg);
@@ -187,8 +187,12 @@ public class RepoHierarchyTest {
                                                     node(homeRepo, homeCacheNode))));
     }
 
-    private PackageID newPackageID(String org, String pkg, String version) {
-        return new PackageID(new Name(org), new Name(pkg), new Name(version));
+    // TODO: Remove this method
+//    private PackageID newPackageID(String org, String pkg, String version) {
+//        return new PackageID(new Name(org), new Name(pkg), new Name(version));
+//    }
+    private PackageID newPackageID(String org, String pkg, String module, String version) {
+        return new PackageID(new Name(org), new Name(pkg), new Name(module), new Name(version));
     }
 
 }

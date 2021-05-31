@@ -87,7 +87,7 @@ public class SymbolTable {
             new CompilerContext.Key<>();
 
     public static final PackageID TRANSACTION = new PackageID(Names.BUILTIN_ORG, Names.TRANSACTION_PACKAGE,
-            Names.EMPTY);
+            Names.DEFAULT_MODULE, Names.EMPTY);
 
     public static final Integer BBYTE_MIN_VALUE = 0;
     public static final Integer BBYTE_MAX_VALUE = 255;

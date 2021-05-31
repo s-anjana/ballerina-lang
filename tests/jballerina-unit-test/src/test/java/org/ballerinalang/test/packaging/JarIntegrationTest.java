@@ -52,7 +52,8 @@ public class JarIntegrationTest {
         JarRepo repo = new JarRepo(tempJar.toUri());
         Converter<Path> subject = repo.getConverterInstance();
 
-        PackageID moduleID = new PackageID(Names.ANON_ORG, Names.DEFAULT_PACKAGE, Names.DEFAULT_VERSION);
+        PackageID moduleID = new PackageID(Names.ANON_ORG, Names.DEFAULT_PACKAGE, Names.DEFAULT_MODULE,
+                Names.DEFAULT_VERSION);
         List<CompilerInput> sources = balPatten.convertToSources(subject, moduleID)
                 .collect(Collectors.toList());
 

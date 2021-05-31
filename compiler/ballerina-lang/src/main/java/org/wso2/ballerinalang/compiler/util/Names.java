@@ -44,6 +44,8 @@ public class Names {
     public static final Name EMPTY = new Name("");
     public static final Name DOT = new Name(".");
     public static final Name DEFAULT_PACKAGE = DOT;
+    //TODO: TBD the default module name
+    public static final Name DEFAULT_MODULE = DOT;
     public static final Name BALLERINA_ORG = new Name("ballerina");
     public static final Name BALLERINA_INTERNAL_ORG = new Name("ballerinai");
     public static final Name LANG = new Name("lang");
@@ -92,6 +94,8 @@ public class Names {
     public static final Name NIL_VALUE = new Name("()");
     public static final Name QUESTION_MARK = new Name("?");
     public static final Name ORG_NAME_SEPARATOR = new Name("/");
+    //TODO: TBD the module name separator
+    public static final Name MODULE_SEPARATOR = DOT;
     public static final Name VERSION_SEPARATOR = new Name(":");
     public static final Name ALIAS_SEPARATOR = VERSION_SEPARATOR;
     public static final Name ANNOTATION_TYPE_PARAM = new Name("typeParam");

@@ -293,8 +293,9 @@ class JvmObservabilityGen {
     private void rewriteAsyncInvocations(BIRFunction func, BIRTypeDefinition attachedTypeDef, BIRPackage pkg) {
         PackageID packageID = pkg.packageID;
         Name org = new Name(IdentifierUtils.decodeIdentifier(packageID.orgName.getValue()));
+        Name pkgName = new Name(IdentifierUtils.decodeIdentifier(packageID.pkgName.getValue()));
         Name module = new Name(IdentifierUtils.decodeIdentifier(packageID.name.getValue()));
-        PackageID currentPkgId = new PackageID(org, module, packageID.version);
+        PackageID currentPkgId = new PackageID(org, pkgName, module, packageID.version);
         BSymbol functionOwner;
         List<BIRFunction> scopeFunctionsList;
         if (attachedTypeDef == null) {
@@ -927,7 +928,8 @@ class JvmObservabilityGen {
         for (BIRAnnotationAttachment annot : callIns.calleeAnnotAttachments) {
             if (OBSERVABLE_ANNOTATION.equals(
                     JvmCodeGenUtil.getPackageName(
-                            new PackageID(annot.packageID.orgName, annot.packageID.name, Names.EMPTY)) +
+                            new PackageID(annot.packageID.orgName, annot.packageID.pkgName, annot.packageID.name,
+                                    Names.EMPTY)) +
                             annot.annotTagRef.value)) {
                 isObservableAnnotationPresent = true;
                 break;
