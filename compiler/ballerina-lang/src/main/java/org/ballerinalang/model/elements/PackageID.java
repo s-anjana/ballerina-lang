@@ -60,6 +60,8 @@ import static org.wso2.ballerinalang.compiler.util.Names.XML_VERSION;
 public class PackageID {
 
     public static final PackageID DEFAULT = new PackageID(Names.ANON_ORG, Names.DEFAULT_PACKAGE, DEFAULT_VERSION);
+    public static final PackageID DEFAULT_WITH_MODULE_NAME = new PackageID(Names.ANON_ORG, Names.DEFAULT_PACKAGE,
+            Names.DEFAULT_MODULE, DEFAULT_VERSION, null);
 
     // Lang.* Modules IDs
 
@@ -119,6 +121,8 @@ public class PackageID {
 
     public Name orgName;
     public Name name;
+    // A read-only variable for module name
+    public Name moduleName;
     public Name version;
 
     public final boolean isUnnamed;
@@ -136,6 +140,16 @@ public class PackageID {
         this.version = version;
         isUnnamed = false;
         sourceFileName = null;
+    }
+
+    public PackageID(Name orgName, Name name, Name moduleName, Name version, Name sourceFileName) {
+        this.orgName = orgName;
+        this.name = name;
+        this.moduleName = moduleName;
+        this.version = version;
+        this.nameComps = createNameComps(name);
+        isUnnamed = false;
+        this.sourceFileName = sourceFileName;
     }
 
     public PackageID(Name orgName, Name name, Name version) {

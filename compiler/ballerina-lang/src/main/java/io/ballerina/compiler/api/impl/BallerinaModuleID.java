@@ -18,6 +18,7 @@
 package io.ballerina.compiler.api.impl;
 
 import io.ballerina.compiler.api.ModuleID;
+import io.ballerina.projects.PackageName;
 import org.ballerinalang.model.elements.PackageID;
 import org.wso2.ballerinalang.compiler.util.Name;
 
@@ -41,6 +42,16 @@ public class BallerinaModuleID implements ModuleID {
     @Override
     public String orgName() {
         return this.moduleID.getOrgName().getValue();
+    }
+
+    /**
+     * Get the Package name of this module ID
+     *
+     * @return Package name
+     */
+    @Override
+    public String packageName() {
+        return this.moduleID.getName().getValue();
     }
 
     @Override

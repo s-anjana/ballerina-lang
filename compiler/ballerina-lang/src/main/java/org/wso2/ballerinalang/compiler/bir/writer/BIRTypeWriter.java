@@ -136,8 +136,9 @@ public class BIRTypeWriter implements TypeVisitor {
         // Write the error package and type name
         int orgCPIndex = addStringCPEntry(bErrorType.tsymbol.pkgID.orgName.value);
         int nameCPIndex = addStringCPEntry(bErrorType.tsymbol.pkgID.name.value);
+        int moduleNameCPIndex = addStringCPEntry(bErrorType.tsymbol.pkgID.moduleName.value);
         int versionCPIndex = addStringCPEntry(bErrorType.tsymbol.pkgID.version.value);
-        int pkgIndex = cp.addCPEntry(new PackageCPEntry(orgCPIndex, nameCPIndex, versionCPIndex));
+        int pkgIndex = cp.addCPEntry(new PackageCPEntry(orgCPIndex, nameCPIndex, moduleNameCPIndex, versionCPIndex));
         buff.writeInt(pkgIndex);
         buff.writeInt(addStringCPEntry(bErrorType.tsymbol.name.value));
         // Write detail types.
@@ -159,8 +160,9 @@ public class BIRTypeWriter implements TypeVisitor {
     private void writeTypeId(BTypeIdSet.BTypeId bTypeId) {
         int orgCPIndex = addStringCPEntry(bTypeId.packageID.orgName.value);
         int nameCPIndex = addStringCPEntry(bTypeId.packageID.name.value);
+        int moduleNameCPIndex = addStringCPEntry(bTypeId.packageID.moduleName.value);
         int versionCPIndex = addStringCPEntry(bTypeId.packageID.version.value);
-        int pkgIndex = cp.addCPEntry(new PackageCPEntry(orgCPIndex, nameCPIndex, versionCPIndex));
+        int pkgIndex = cp.addCPEntry(new PackageCPEntry(orgCPIndex, nameCPIndex, moduleNameCPIndex, versionCPIndex));
         buff.writeInt(pkgIndex);
         buff.writeInt(addStringCPEntry(bTypeId.name));
         buff.writeBoolean(bTypeId.publicId);
@@ -330,8 +332,9 @@ public class BIRTypeWriter implements TypeVisitor {
 
         int orgCPIndex = addStringCPEntry(tsymbol.pkgID.orgName.value);
         int nameCPIndex = addStringCPEntry(tsymbol.pkgID.name.value);
+        int moduleNameCPIndex = addStringCPEntry(tsymbol.pkgID.name.value);
         int versionCPIndex = addStringCPEntry(tsymbol.pkgID.version.value);
-        int pkgIndex = cp.addCPEntry(new PackageCPEntry(orgCPIndex, nameCPIndex, versionCPIndex));
+        int pkgIndex = cp.addCPEntry(new PackageCPEntry(orgCPIndex, nameCPIndex, moduleNameCPIndex, versionCPIndex));
         buff.writeInt(pkgIndex);
     }
 

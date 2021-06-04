@@ -38,10 +38,11 @@ public class ModuleDescriptor {
         this.packageDesc = packageDesc;
 
         if (packageDesc.name().value().equals(".") && packageDesc.org().anonymous()) {
-            moduleCompilationId = PackageID.DEFAULT;
+            moduleCompilationId = PackageID.DEFAULT_WITH_MODULE_NAME;
         } else {
             moduleCompilationId = new PackageID(new Name(packageDesc.org().value()),
-                    new Name(moduleName.toString()), new Name(packageDesc.version().toString()));
+                    new Name(packageDesc.name().value()), new Name(moduleName.toString()),
+                    new Name(packageDesc.version().toString()), null);
         }
     }
 

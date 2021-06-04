@@ -340,7 +340,7 @@ public class BIRPackageSymbolEnter {
                 }
                 return new CPEntry.StringCPEntry(strValue);
             case CP_ENTRY_PACKAGE:
-                return new CPEntry.PackageCPEntry(dataInStream.readInt(),
+                return new CPEntry.PackageCPEntry(dataInStream.readInt(), dataInStream.readInt(),
                         dataInStream.readInt(), dataInStream.readInt());
             case CP_ENTRY_SHAPE:
                 env.unparsedBTypeCPs.put(i, readByteArray(dataInStream));

@@ -59,7 +59,8 @@ public class BIRWriterUtils {
     public static int addPkgCPEntry(PackageID packageID, ConstantPool cp) {
         int orgCPIndex = addStringCPEntry(packageID.orgName.getValue(), cp);
         int nameCPIndex = addStringCPEntry(packageID.name.getValue(), cp);
+        int moduleNameCPIndex = addStringCPEntry(packageID.moduleName.getValue(), cp);
         int versionCPIndex = addStringCPEntry(packageID.version.getValue(), cp);
-        return cp.addCPEntry(new CPEntry.PackageCPEntry(orgCPIndex, nameCPIndex, versionCPIndex));
+        return cp.addCPEntry(new CPEntry.PackageCPEntry(orgCPIndex, nameCPIndex, moduleNameCPIndex, versionCPIndex));
     }
 }
